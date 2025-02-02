@@ -1,8 +1,8 @@
 class Shape:
-    def Area(self):
+     def Area(self):
         return 0
     
-class square(Shape):
+class Square(Shape):
     def __init__(self, length):
         self.length = length
     def Area(self):
@@ -10,6 +10,6 @@ class square(Shape):
     
 n = float(input("n="))
 myshape = Shape()
-mysquare = square(n)
+mysquare = Square(n)
 print("Square Area: ", mysquare.Area())
 print("Other: ", myshape.Area())

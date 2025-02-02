@@ -1,8 +1,11 @@
 class string_methods:
-    def getstring(self):
-        self.string=input("Your string:")
-    def printstring(self):
-        print("Print with uppercase" + self.string.upper())
-str = string_methods()
-str.getstring()
-str.printstring()
+    def __init__(self):
+        self.text = ""
+    def getString(self):
+        self.text = input()
+    def printString(self):
+        print(self.text.upper())
+
+string = string_methods()
+string.getString()
+string.printString()
