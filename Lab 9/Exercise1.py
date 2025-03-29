@@ -6,7 +6,7 @@ import random, time
 pygame.init()
 
 # Load background image
-background = pygame.image.load('PP2/Lab 8/car_game_images/AnimatedStreet.png')
+background = pygame.image.load('PP2/Lab 9/car_game_images/AnimatedStreet.png')
 
 # Define colors
 BLACK = (0, 0, 0)
@@ -32,7 +32,7 @@ clock = pygame.time.Clock()  # Initialize clock for frame rate control
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('PP2/Lab 8/car_game_images/Player.png')
+        self.image = pygame.image.load('PP2/Lab 9/car_game_images/Player.png')
         self.rect = self.image.get_rect()
         self.rect.center = (WIDTH // 2, HEIGHT - 100)
 
@@ -47,7 +47,7 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('PP2/Lab 8/car_game_images/Enemy.png')
+        self.image = pygame.image.load('PP2/Lab 9/car_game_images/Enemy.png')
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, WIDTH - 40), 0)
 
@@ -63,7 +63,7 @@ class Enemy(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('PP2/Lab 8/car_game_images/Coin.png')
+        self.image = pygame.image.load('PP2/Lab 9/car_game_images/Coin.png')
         self.image = pygame.transform.scale(self.image, (30, 30))
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, WIDTH - 40), random.randint(-100, -40))
@@ -93,15 +93,17 @@ all_sprites.add(E1)  # Add enemy to the group
 # Create a custom event for increasing speed over time
 INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
-
+N = 5
 # Main game loop
 running = True
 while running:
     screen.blit(background, (0, 0))  # Draw the background
-
+    if COINS_COLLECTED == N: # Increase speed of enemy after earning N coins
+        SPEED += 5
+        N += 5
+        
+        # Increase enemy speed at N coins
     for event in pygame.event.get():
-        if event.type == INC_SPEED:
-            SPEED += 2  # Increase enemy speed every second
         if event.type == pygame.QUIT:
             running = False
 
@@ -120,7 +122,7 @@ while running:
 
         # Check for collision between the player and a coin
         if pygame.sprite.collide_rect(P1, coin):
-            COINS_COLLECTED += 1  # Increase the coin counter
+            COINS_COLLECTED += random.randint(1,3)  # Coins with different weights
             coin.rect.top = random.randint(-100, -40)  # Reset coin to appear from the top
             coin.rect.centerx = random.randint(40, WIDTH - 40)  # Place it at a new random position
 
