@@ -101,7 +101,7 @@ while running:
 
     for event in pygame.event.get():
         if event.type == INC_SPEED:
-            SPEED += 2  # Increase enemy speed every second
+            SPEED += 0.5  # Increase enemy speed every second
         if event.type == pygame.QUIT:
             running = False
 

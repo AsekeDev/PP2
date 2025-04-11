@@ -7,6 +7,7 @@ Height = 800
 screen = pygame.display.set_mode((Width, Height))
 Radius = 25
 Ball_speed = 20
+Ball_color = (255, 0, 0)
 ball_x = Width// 2  
 ball_y = Height // 2
 running = True
@@ -27,5 +28,8 @@ while running:
         ball_y -= Ball_speed
     if keys[pygame.K_DOWN] and ball_y + Radius + Ball_speed <= Height:
         ball_y += Ball_speed 
-    pygame.draw.circle(screen, (255, 0, 0), (ball_x,ball_y), Radius)
+    pygame.draw.circle(screen, Ball_color, (ball_x,ball_y), Radius)
+    
+ 
+    
  

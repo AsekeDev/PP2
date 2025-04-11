@@ -48,6 +48,7 @@ while running:
                 mode = "brush"
             if event.key == pygame.K_e:
                 mode = "eraser" 
+            
 
             if pygame.K_1 <= event.key <= pygame.K_8:
                 color = colors[event.key - pygame.K_1]
